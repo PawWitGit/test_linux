@@ -4,7 +4,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "pip install pytest"
+                sh """
+                   python -m venv .venv
+                   source ./.env/bin/activate
+                   python -m pip install -r requirements.txt
+                   python -m pip install pytest pytest-cov coverage
+                   """
             }
         }
     }
