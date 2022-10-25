@@ -1,19 +1,16 @@
-// pipeline {
-//     agent any
-//     stages {
-//
-//         stage('Build') {
-//
-//             withPythonEnv('python3'){
-//                 sh 'pip install pytest'
-//                 sh 'pytest app/test_main.py'
-//             }
-//         }
-//     }
-// }
+pipeline {
+    agent any
 
-withPythonEnv('python') {
-    sh 'pip install pytest'
-    sh 'pytest app/test_main.py'
+    stages {
+        stage('Hello') {
+            steps {
+                withPythonEnv('python') {
+                    sh 'pip install pytest'
+                    sh 'pytest app/test_main.py'
+                    }
 
+            }
+        }
+    }
 }
+
