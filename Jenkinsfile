@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'make app.test_main.py'
+                sh 'make app/test_main.py'
             }
         }
         stage('Test'){
