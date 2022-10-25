@@ -1,20 +1,21 @@
-
-
 pipeline {
-    agent any
-    options {
-        skipStagesAfterUnstable()
+  agent
+  stages {
+    stage('Initialise') {
+      steps {
+        stepInitialise()
+        stepPythonConfigure()
+      }
     }
-    stages {
-        stage("test PythonEnv") {
+    stage('Install Dependencies') {
+      steps {
+        sh """
+          python -m venv .env
+          source ./.env/bin/activate
+          python -m pip install -r requirements.txt
+          python -m pip install pytest pytest-cov coverage
+          """
+      }
+    }
 
-            withPythonEnv('python3') {
-            sh 'pip install pytest'
-            sh 'pytest mytest.py'
-            }
-        }
-    }
 }
-
-
-
