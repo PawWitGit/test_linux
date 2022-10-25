@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'make /app/test_main.py'
+                sh 'make Jenkins/app/test_main.py'
             }
         }
 
