@@ -1,15 +1,12 @@
 pipeline {
-    agent {label 'python36'}
+    agent any
     stages {
 
-        stage('Deploy') {
-            steps {
-                sh """
-                   python -m venv .venv
-                   source ./.env/bin/activate
-                   python -m pip install -r requirements.txt
-                   python -m pip install pytest pytest-cov coverage
-                   """
+        stage('Build') {
+
+            withPythonEnv('python3'){
+                sh 'pip install pytest'
+                sh 'pytest app/test_main.py'
             }
         }
     }
