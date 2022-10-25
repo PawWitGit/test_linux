@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'python -m pytest app/test_main.py'
+                sh 'python app/test_main.py'
             }
         }
 

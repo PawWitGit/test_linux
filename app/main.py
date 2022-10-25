@@ -9,3 +9,7 @@ class CreateJob:
         b = self.var_2
 
         return a + b
+
+
+obj_1 = CreateJob(1, 2)
+print(obj_1.get_summary())
