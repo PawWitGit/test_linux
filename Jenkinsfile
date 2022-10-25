@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'python36'}
     stages {
 
         stage('Deploy') {
